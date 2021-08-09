@@ -16,7 +16,11 @@ private:
 public:
 	Command_holder() : IsEmpty(true) {}
 	~Command_holder() {
-		back.clear();
+		auto it = back.begin();
+		while (it != back.end()) {
+			delete *it;
+			back.erase(it++);
+		}
 		while (!forward.empty()) {
 			delete forward.top();
 			forward.pop();
