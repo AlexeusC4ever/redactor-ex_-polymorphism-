@@ -6,6 +6,7 @@ void Command_holder::push_back(Command* a) {
 		IsEmpty = false;
 	}
 	else if (back.size() > overflow) {
+		delete *back.begin();
 		back.erase(back.begin());
 	}
 }

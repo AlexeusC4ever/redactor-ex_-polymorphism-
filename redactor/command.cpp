@@ -73,7 +73,7 @@ void Word_erase::execute()
 
 void Word_erase::unexecute()
 {
-	if(word.empty()) return;
+	if (word.empty()) return;
 	auto it = text.begin() + new_cursor_pos;
 	for (char a : word) {
 		text.insert(it, a);
