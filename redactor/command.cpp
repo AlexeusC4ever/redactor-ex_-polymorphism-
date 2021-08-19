@@ -1,10 +1,6 @@
 #include "command.h"
 #include <iostream>
 
-void Command::execute(){}
-
-void Command::unexecute(){}
-
 void Move::execute()
 {
 	cursor_previous = *cursor_current;

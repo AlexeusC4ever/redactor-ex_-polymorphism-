@@ -9,11 +9,12 @@ protected:
 	std::string& text;
 
 public:
-	Command(std::string& text_) : text(text_) {}
+	Command(std::string& text_) : 
+		text(text_) {}
 	virtual ~Command() {}
 
-	virtual void execute();
-	virtual void unexecute();
+	virtual void execute() = 0;
+	virtual void unexecute() = 0;
 	void set_cursor(size_t pos) { cursor_pos = pos; }
 	size_t get_cursor() { return cursor_pos; }
 };

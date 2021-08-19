@@ -37,3 +37,32 @@ Command* Command_holder::get_back() {
 	back.erase(std::prev(back.end()));
 	return a;
 }
+
+
+
+//void Command_holder::push_back(Command* a) {
+//	holder.push_back(a);
+//	if (command_pointer != holder.end()) {
+//		++command_pointer;
+//	}
+//	else command_pointer = holder.begin();
+//}
+//
+//Command* Command_holder::get_forward() {
+//	return *(++command_pointer);
+//}
+//
+//void Command_holder::clear_forward() {
+//	auto buf = command_pointer;
+//	++buf;
+//	while (buf != holder.end()) {
+//		holder.erase(buf++);
+//	}
+//}
+//
+//Command* Command_holder::get_back() {
+//	if (command_pointer != holder.begin())
+//		return *(command_pointer--);
+//	else
+//		return*(command_pointer);
+//}
