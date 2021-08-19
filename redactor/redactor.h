@@ -7,8 +7,6 @@
 #include <string>
 #include <Windows.h>
 
-static unsigned redactor_call_counter = 0;
-
 class Redactor {
 private:
 	std::string filename;
@@ -18,9 +16,6 @@ private:
 
 public:
 	Redactor(std::string& file): cursor_position(0), filename(file) {
-		++redactor_call_counter;
-		std::cout << redactor_call_counter << "\n";
-		Sleep(1000);
 		try {
 			std::string buf;
 			std::ifstream fin;
