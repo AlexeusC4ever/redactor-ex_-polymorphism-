@@ -1,5 +1,5 @@
-#ifndef _COMMAND_H_
-#define _COMMAND_H_
+#ifndef COMMAND_H_
+#define COMMAND_H_
 
 #include <string>
 
@@ -10,13 +10,14 @@ protected:
 
 public:
 	Command(std::string& text_) : 
-		text(text_) {}
+		text(text_), cursor_pos(0) {}
+
 	virtual ~Command() {}
 
 	virtual void execute() = 0;
 	virtual void unexecute() = 0;
 	void set_cursor(size_t pos) { cursor_pos = pos; }
-	size_t get_cursor() { return cursor_pos; }
+	size_t get_cursor() const { return cursor_pos; }
 };
 
 class Move : public Command {
@@ -27,7 +28,7 @@ private:
 
 public:
 	Move(size_t* current_pos, size_t new_pos, std::string& text) : 
-		Command(text), cursor_current(current_pos), cursor_new(new_pos) {}
+		Command(text), cursor_current(current_pos), cursor_new(new_pos), cursor_previous(0) {}
 	void execute() override;
 	void unexecute() override;
 
@@ -51,7 +52,7 @@ private:
 	char sym;
 
 public:
-	Sym_erase(std::string& text) : Command(text) {}
+	Sym_erase(std::string& text) : Command(text), sym(0) {}
 	void execute() override;
 	void unexecute() override;
 };
@@ -62,7 +63,7 @@ private:
 	size_t new_cursor_pos;
 
 public:
-	Word_erase(std::string& text) : Command(text) {}
+	Word_erase(std::string& text) : Command(text), new_cursor_pos(0) {}
 	void execute() override;
 	void unexecute() override;
 };
@@ -107,4 +108,4 @@ public:
 	void unexecute() override;
 };
 
-#endif  //_COMMAND_H_
+#endif  // COMMAND_H_

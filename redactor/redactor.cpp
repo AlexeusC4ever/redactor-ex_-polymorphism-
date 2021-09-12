@@ -1,9 +1,36 @@
+#include <iostream>
+#include <fstream>
+#include <string>
 #include "redactor.h"
 #include "command.h"
-#include <iostream>
-#include <string>
-#include <cstdlib>
-#include <Windows.h>
+
+Redactor::Redactor(std::string& file) : cursor_position(0), filename(file) {
+	try {
+		std::string buf;
+		std::ifstream fin;
+		fin.open(filename);
+		if (!fin) throw "file error\n";
+
+		while (!fin.eof()) {
+			std::getline(fin, buf);
+			text += buf + "\n";
+		}
+		fin.close();
+	}
+	catch (const char* a) {
+		std::cout << a;
+		throw;
+	}
+}
+
+void Redactor::print() const {
+	size_t size = text.length();
+	for (size_t i = 0; i < size; ++i) {
+		if (i == cursor_position) std::cout << "|";
+		std::cout << text[i];
+	}
+	std::cout << "\n";
+}
 
 void Redactor::execute()
 {

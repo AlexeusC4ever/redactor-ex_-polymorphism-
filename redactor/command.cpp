@@ -1,5 +1,4 @@
 #include "command.h"
-#include <iostream>
 
 void Move::execute()
 {

@@ -1,11 +1,7 @@
-#ifndef _REDACTOR_H_
-#define _REDACTOR_H_
+#ifndef REDACTOR_H_
+#define REDACTOR_H_
 
 #include "command_holder.h"
-#include <fstream>
-#include <iostream>
-#include <string>
-#include <Windows.h>
 
 class Redactor {
 private:
@@ -15,35 +11,11 @@ private:
 	size_t cursor_position;
 
 public:
-	Redactor(std::string& file): cursor_position(0), filename(file) {
-		try {
-			std::string buf;
-			std::ifstream fin;
-			fin.open(filename);
-			if (!fin) throw "file error\n";
+	Redactor(std::string& file);
 
-			while (!fin.eof()) {
-				std::getline(fin, buf);
-				text += buf + "\n";
-			}
-			fin.close();
-		}
-		catch (const char* a) {
-			std::cout << a;
-			throw;
-		}
-	}
-
-	void print() { 
-		size_t size = text.length();
-		for (size_t i = 0; i < size; ++i) {
-			if (i == cursor_position) std::cout << "|";
-			std::cout << text[i];
-		}
-		std::cout << "\n";
-	}
+	void print() const;
 
 	void execute();
 };
 
-#endif  //_REDACTOR_H_
+#endif  // REDACTOR_H_

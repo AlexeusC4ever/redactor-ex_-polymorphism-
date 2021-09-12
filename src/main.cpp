@@ -1,7 +1,8 @@
-﻿#include "redactor.h"
-#include <iostream>
+﻿#include <iostream>
 #include <fstream>
 #include <clocale>
+#include <string>
+#include "redactor.h"
 
 int main()
 {
