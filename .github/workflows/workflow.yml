@@ -51,10 +51,9 @@ jobs:
           cmake ninja ..
           cmake --build .
           cd ..
-          ls
           
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v3.0.0
         with:
           name: my_app
-          path: build/src/debug/main**
+          path: build/src/Debug/main**
