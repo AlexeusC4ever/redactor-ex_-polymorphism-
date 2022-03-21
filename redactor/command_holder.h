@@ -5,7 +5,7 @@
 #include <list>
 #include "command.h"
 
-const unsigned overflow = 10;
+const unsigned overflow = 100;
 
 class Command_holder {
 private:
